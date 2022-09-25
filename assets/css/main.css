@@ -113,10 +113,16 @@ section:nth-child(5) {
 section .container {
   margin: 100px;
 }
+
+h5.stats {
+  font-size: 6rem;
+}
+
 section h1 {
   font-size: 3rem;
   margin: 20px;
 }
+
 section .text-container {
   display: flex;
 }
@@ -194,4 +200,12 @@ section .text-container .text-box h3 {
 .bold-1 {
   font-weight: bold;
   color: #00c2cb
+}
+
+.text-center {
+  text-align: center;
+}
+
+.stats-sub {
+  font-size: 1.4rem
 }
