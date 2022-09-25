@@ -90,7 +90,7 @@ function init() {
   // document.body.addEventListener("pointermove", onPointerMove);
 
   // custom event
-  document.body.addEventListener('pagechanged', onPageChange)
+  document.body.addEventListener("pagechanged", onPageChange);
 
   window.addEventListener("resize", onWindowResize);
 }
@@ -116,7 +116,7 @@ function animate() {
   requestAnimationFrame(animate);
 
   render();
-  stats.update();
+  // stats.update();
 }
 
 function render() {

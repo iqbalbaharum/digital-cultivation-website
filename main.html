@@ -1,215 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Digital Cultivation</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-    />
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="styles.css" /> -->
-  </head>
-  <!-- <style>
+
+<head>
+  <title>Digital Cultivation</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
+  <link rel="icon" type="image" href="/assets/img/dc.png">
+  <!-- <link rel="stylesheet" type="text/css" href="styles.css" /> -->
+</head>
+<!-- <style>
     body {
         background-color: #9189B2;
     }
 </style> -->
-  <script>
-    let section = document.querySelectorAll('section');
-    let menu = document.querySelectorAll('header nav ul li a');
+<script>
+  let section = document.querySelectorAll('section');
+  let menu = document.querySelectorAll('header nav ul li a');
 
-    window.onscroll = () => {
-      section.forEach((i) => {
-        let top = window.scrollY;
-        let offset = i.offsetTop - 150;
-        let height = i.offsetHeight;
-        let id = i.getAttribute('id');
+  window.onscroll = () => {
+    section.forEach((i) => {
+      let top = window.scrollY;
+      let offset = i.offsetTop - 150;
+      let height = i.offsetHeight;
+      let id = i.getAttribute('id');
 
-        if (top >= offset && top < offset + height) {
-          menu.forEach((link) => {
-            link.classList.remove('active');
-            document
-              .querySelector('header nav  a[href*=' + id + ']')
-              .classList.add('active');
-          });
-        }
-      });
-    };
-
-    function reveal() {
-      var reveals = document.querySelectorAll('.reveal');
-
-      for (var i = 0; i < reveals.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = reveals[i].getBoundingClientRect().top;
-        var elementVisible = 150;
-
-        if (elementTop < windowHeight - elementVisible) {
-          reveals[i].classList.add('active');
-        } else {
-          reveals[i].classList.remove('active');
-        }
-
-        // listen for clicks on the navbar
-        document.querySelector('.navbar').addEventListener('click', (e) => {
-          // ignore it if the click isn't on an anchor element
-          if (e.target.tagName.toLowerCase() === 'a') {
-            // remove the 'active' class from all of the nav anchors
-            document
-              .querySelectorAll('.navbar a')
-              .forEach((e) => e.classList.remove('active'));
-
-            // add the 'active' class to the clicked element
-            e.target.classList.add('active');
-
-            const event = new Event('pagechanged');
-            document.body.dispatchEvent(event);
-          }
+      if (top >= offset && top < offset + height) {
+        menu.forEach((link) => {
+          link.classList.remove('active');
+          document
+            .querySelector('header nav  a[href*=' + id + ']')
+            .classList.add('active');
         });
       }
+    });
+  };
+
+  function reveal() {
+    var reveals = document.querySelectorAll('.reveal');
+
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = reveals[i].getBoundingClientRect().top;
+      var elementVisible = 150;
+
+      if (elementTop < windowHeight - elementVisible) {
+        reveals[i].classList.add('active');
+      } else {
+        reveals[i].classList.remove('active');
+      }
+
+      // listen for clicks on the navbar
+      document.querySelector('.navbar').addEventListener('click', (e) => {
+        // ignore it if the click isn't on an anchor element
+        if (e.target.tagName.toLowerCase() === 'a') {
+          // remove the 'active' class from all of the nav anchors
+          document
+            .querySelectorAll('.navbar a')
+            .forEach((e) => e.classList.remove('active'));
+
+          // add the 'active' class to the clicked element
+          e.target.classList.add('active');
+
+          const event = new Event('pagechanged');
+          document.body.dispatchEvent(event);
+        }
+      });
     }
+  }
 
-    window.addEventListener('scroll', reveal);
+  window.addEventListener('scroll', reveal);
 
-    // To check the scroll position on page load
-    reveal();
-  </script>
+  // To check the scroll position on page load
+  reveal();
 
-  <body data-barba="wrapper">
-    <canvas id="bg"></canvas>
-    <main>
-      <header>
-        <nav class="navbar">
-          <ul>
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#graduate">Graduate</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#expansion">Expansion</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-      </header>
-      <h1></h1>
-      <section id="home" data-barba="container" data-barba-namespace="home">
-        <div class="container">
-          <h1>
-            Program that <span class="bold-1">matches young talent</span> to a
-            digital roles in a company and provides
-            <span class="bold-1">applied learning</span> over the course of
-            their apprenticeships.
-          </h1>
-        </div>
-      </section>
-      <section id="about" data-barba="container" data-barba-namespace="about">
-        <div class="container reveal">
-          <div class="text-container">
-            <div class="text-box">
-              <h3>Learn from your experienced mentor for free</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-                eius molestiae perferendis eos provident vitae iste. Lorem ipsum
-                dolor sit amet consectetur adipisicing elit. Quam blanditiis,
-                officiis, voluptate quisquam aperiam nobis est, quis neque esse
-                soluta dolores iste sit corrupti! Magnam, delectus qui. Odit,
-                accusamus doloremque.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex est
-                rerum id quis eaque rem suscipit reprehenderit quaerat vero
-                nesciunt?
-              </p>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Voluptatum, eaque voluptatibus. Eaque tempore quam nesciunt.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum
-                adipisci blanditiis assumenda atque officiis? Vel, fuga facilis
-                quia reprehenderit nihil optio harum. Quo sapiente veniam atque
-                corporis tempora non repellat?
-              </p>
-            </div>
+
+  let xPos = 0;
+  nullTargetWarn: false
+  gsap.timeline()
+    .set('.ring', { rotationY: 180, cursor: 'grab' }) //set initial rotationY so the parallax jump happens off screen
+    .set('.pho', { // apply transform rotations to each image
+      rotateY: (i) => i * -36,
+      transformOrigin: '50% 50% 500px',
+      z: -500,
+      backgroundImage: (i) => 'url(https://picsum.photos/id/' + (i + 32) + '/600/400/)',
+      backgroundPosition: (i) => getBgPos(i),
+      backfaceVisibility: 'hidden'
+    })
+    .from('.pho', {
+      duration: 1.5,
+      y: 200,
+      opacity: 0,
+      stagger: 0.1,
+      ease: 'expo'
+    })
+    .add(() => {
+      $('.pho').on('mouseenter', (e) => {
+        let current = e.currentTarget;
+        gsap.to('.pho', { opacity: (i, t) => (t == current) ? 1 : 0.5, ease: 'power3' })
+      })
+      $('.phi').on('mouseleave', (e) => {
+        gsap.to('.img', { opacity: 1, ease: 'power2.inOut' })
+      })
+    }, '-=0.5')
+
+  $(window).on('mousedown touchstart', dragStart);
+  $(window).on('mouseup touchend', dragEnd);
+
+
+  function dragStart(e) {
+    if (e.touches) e.clientX = e.touches[0].clientX;
+    xPos = Math.round(e.clientX);
+    gsap.set('.ring', { cursor: 'grabbing' })
+    $(window).on('mousemove touchmove', drag);
+  }
+
+  function drag(e) {
+    if (e.touches) e.clientX = e.touches[0].clientX;
+
+    gsap.to('.ring', {
+      rotationY: '-=' + ((Math.round(e.clientX) - xPos) % 360),
+      onUpdate: () => { gsap.set('.pho', { backgroundPosition: (i) => getBgPos(i) }) }
+    });
+
+    xPos = Math.round(e.clientX);
+  }
+
+
+  function dragEnd(e) {
+    $(window).off('mousemove touchmove', drag);
+    gsap.set('.ring', { cursor: 'grab' });
+  }
+
+  function getBgPos(i) { //returns the background-position string to create parallax movement in each image
+    return (100 - gsap.utils.wrap(0, 360, gsap.getProperty('.ring', 'rotationY') - 180 - i * 36) / 360 * 500) + 'px 0px';
+  }
+</script>
+
+<body data-barba="wrapper">
+  <canvas id="bg"></canvas>
+  <main>
+    <header>
+      <nav class="navbar">
+        <ul>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#graduate">Graduate</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#expansion">Expansion</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#picture">Picture</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1></h1>
+    <section id="home" data-barba="container" data-barba-namespace="home">
+      <div class="container">
+        <h1>
+          Program that <span class="bold-1">matches young talent</span> to a
+          digital roles in a company and provides
+          <span class="bold-1">applied learning</span> over the course of
+          their apprenticeships.
+        </h1>
+      </div>
+    </section>
+    <section id="about" data-barba="container" data-barba-namespace="about">
+      <div class="container reveal">
+        <div class="text-container">
+          <div class="text-box">
+            <h3>Learn from your experienced mentor for free</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+              eius molestiae perferendis eos provident vitae iste. Lorem ipsum
+              dolor sit amet consectetur adipisicing elit. Quam blanditiis,
+              officiis, voluptate quisquam aperiam nobis est, quis neque esse
+              soluta dolores iste sit corrupti! Magnam, delectus qui. Odit,
+              accusamus doloremque.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex est
+              rerum id quis eaque rem suscipit reprehenderit quaerat vero
+              nesciunt?
+            </p>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Voluptatum, eaque voluptatibus. Eaque tempore quam nesciunt.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum
+              adipisci blanditiis assumenda atque officiis? Vel, fuga facilis
+              quia reprehenderit nihil optio harum. Quo sapiente veniam atque
+              corporis tempora non repellat?
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="graduate">
-        <div class="container reveal" style="text-align: center">
-          <img src="./assets/img/students.png" width="80%" />
-        </div>
-      </section>
+    <section id="graduate">
+      <div class="container reveal" style="text-align: center">
+        <img src="./assets/img/students.png" width="80%" />
+      </div>
+    </section>
 
-      <section id="services">
-        <div class="container reveal">
-          <h2>Services</h2>
-          <div class="text-container">
-            <div class="text-box">
-              <h3>EDUCATION</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-                eius molestiae perferendis eos provident vitae iste.
-              </p>
-            </div>
-            <div class="text-box">
-              <h3>CAREER</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-                eius molestiae perferendis eos provident vitae iste.
-              </p>
-            </div>
-            <div class="text-box">
-              <h3>OPPORTUNITY</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-                eius molestiae perferendis eos provident vitae iste.
-              </p>
-            </div>
+    <section id="services">
+      <div class="container reveal">
+        <h2>Services</h2>
+        <div class="text-container">
+          <div class="text-box">
+            <h3>EDUCATION</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+              eius molestiae perferendis eos provident vitae iste.
+            </p>
+          </div>
+          <div class="text-box">
+            <h3>CAREER</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+              eius molestiae perferendis eos provident vitae iste.
+            </p>
+          </div>
+          <div class="text-box">
+            <h3>OPPORTUNITY</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+              eius molestiae perferendis eos provident vitae iste.
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="expansion">
-        <div class="container reveal">
-          <h2 style="margin-top: -0.8rem">Expansion</h2>
-          <!-- <div class="text-container">
+    <section id="expansion">
+      <div class="container reveal">
+        <h2 style="margin-top: -0.8rem">Expansion</h2>
+        <!-- <div class="text-container">
 
                 </div> -->
-          <video width="1600px" autoplay controls>
-            <source src="assets/expansion.mp4" type="video/mp4" />
-          </video>
-        </div>
-      </section>
-      <section id="contact">
-        <div class="container reveal">
-          <h2>Contact</h2>
-          <div class="text-container">
-            <div class="text-box">
-              <h3>Section Text</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-            <div class="text-box">
-              <h3>Section Text</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            </div>
+        <video width="1600px" autoplay controls>
+          <source src="assets/expansion.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+    <section id="contact">
+      <div class="container reveal">
+        <h2>Contact</h2>
+        <div class="text-container">
+          <div class="text-box">
+            <h3>Section Text</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+          <div class="text-box">
+            <h3>Section Text</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
+    <section id="picture">
+      <div class="container reveal ">
+        <div class="component">
+          <div class="ring">
+            <div class="pho">HELlloo</div>
+            <div class="pho"></div>
+            <div class="pho"></div>
+            <div class="pho"></div>
+            <div class="pho"></div>
+            <div class="pho"></div>
+            <div class="pho"></div>
+            <div class="pho"></div>
+            <div class="pho"></div>
+            <div class="pho"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Import maps polyfill -->
-    <!-- Remove this when import maps will be widely supported -->
-    <script
-      async
-      src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"
-    ></script>
+  </main>
 
-    <script type="importmap">
+  <!-- Import maps polyfill -->
+  <!-- Remove this when import maps will be widely supported -->
+  <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+
+  <script type="importmap">
       {
         "imports": {
           "three": "../build/three.module.js",
@@ -217,7 +298,8 @@
         }
       }
     </script>
-    <script type="module" src="pages/main.js"></script>
-    <script src="/pages/transistion.js"></script>
-  </body>
+  <script type="module" src="pages/main.js"></script>
+  <script type="module" src="/pages/transistion.js"></script>
+</body>
+
 </html>
