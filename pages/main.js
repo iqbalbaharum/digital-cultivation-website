@@ -87,9 +87,10 @@ function init() {
   document.body.appendChild(renderer.domElement);
 
   document.body.style.touchAction = "none";
-  document.body.addEventListener("pointermove", onPointerMove);
+  // document.body.addEventListener("pointermove", onPointerMove);
 
-  //
+  // custom event
+  document.body.addEventListener('pagechanged', onPageChange)
 
   window.addEventListener("resize", onWindowResize);
 }
@@ -104,11 +105,9 @@ function onWindowResize() {
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-function onPointerMove(event) {
-  if (event.isPrimary === false) return;
-
-  mouseX = event.clientX - windowHalfX;
-  mouseY = event.clientY - windowHalfY;
+function onPageChange() {
+  mouseX = Math.random() * 43.110107421875;
+  mouseY = Math.random() * -177.40673828125;
 }
 
 //

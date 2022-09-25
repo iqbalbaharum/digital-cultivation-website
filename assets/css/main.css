@@ -1,4 +1,5 @@
 @import url('http://fonts.cdnfonts.com/css/alone-in-space');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 canvas {
   position: fixed;
@@ -21,7 +22,7 @@ main {
   padding: 0;
   top: 0;
   box-sizing: border-box;
-  font-family: "Asap", sans-serif;
+  font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
 }
 ul {
@@ -116,23 +117,16 @@ section h1 {
   font-size: 3rem;
   margin: 20px;
 }
-section h2 {
-  font-size: 40px;
-  text-align: center;
-  text-transform: uppercase;
-}
 section .text-container {
   display: flex;
 }
 section .text-container .text-box {
   margin: 20px;
   padding: 20px;
-  background: #00c2cb;
 }
 section .text-container .text-box h3 {
   font-size: 30px;
   text-align: center;
-  text-transform: uppercase;
   margin-bottom: 10px;
 }
 
@@ -196,3 +190,8 @@ section .text-container .text-box h3 {
   }
 }
 
+/* TYPOGRAPHY */
+.bold-1 {
+  font-weight: bold;
+  color: #00c2cb
+}
