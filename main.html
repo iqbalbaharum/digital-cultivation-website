@@ -5,18 +5,14 @@
   <title>Digital Cultivation</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  <link rel="icon" type="image" href="/assets/img/dc.png">
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
   <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
-  <link rel="icon" type="image" href="/assets/img/dc.png">
+
   <!-- <link rel="stylesheet" type="text/css" href="styles.css" /> -->
 </head>
-<!-- <style>
-    body {
-        background-color: #9189B2;
-    }
-</style> -->
 <script>
   let section = document.querySelectorAll('section');
   let menu = document.querySelectorAll('header nav ul li a');
@@ -77,67 +73,84 @@
   // To check the scroll position on page load
   reveal();
 
-
   let xPos = 0;
-  nullTargetWarn: false
-  gsap.timeline()
-    .set('.ring', { rotationY: 180, cursor: 'grab' }) //set initial rotationY so the parallax jump happens off screen
-    .set('.pho', { // apply transform rotations to each image
+  // nullTargetWarn: false;
+  gsap
+    .timeline()
+    .set(".ring", { rotationY: 180, cursor: "grab" }) //set initial rotationY so the parallax jump happens off screen
+    .set(".pho", {
+      // apply transform rotations to each image
       rotateY: (i) => i * -36,
-      transformOrigin: '50% 50% 500px',
+      transformOrigin: "50% 50% 500px",
       z: -500,
-      backgroundImage: (i) => 'url(https://picsum.photos/id/' + (i + 32) + '/600/400/)',
+      backgroundImage: (i) =>
+        "url(https://picsum.photos/id/" + (i + 32) + "/600/400/)",
       backgroundPosition: (i) => getBgPos(i),
-      backfaceVisibility: 'hidden'
+      backfaceVisibility: "hidden",
     })
-    .from('.pho', {
+    .from(".pho", {
       duration: 1.5,
       y: 200,
       opacity: 0,
       stagger: 0.1,
-      ease: 'expo'
+      ease: "expo",
     })
     .add(() => {
-      $('.pho').on('mouseenter', (e) => {
+      $(".pho").on("mouseenter", (e) => {
         let current = e.currentTarget;
-        gsap.to('.pho', { opacity: (i, t) => (t == current) ? 1 : 0.5, ease: 'power3' })
-      })
-      $('.phi').on('mouseleave', (e) => {
-        gsap.to('.img', { opacity: 1, ease: 'power2.inOut' })
-      })
-    }, '-=0.5')
+        gsap.to(".pho", {
+          opacity: (i, t) => (t == current ? 1 : 0.5),
+          ease: "power3",
+        });
+      });
+      $(".pho").on("mouseleave", (e) => {
+        gsap.to(".pho", { opacity: 1, ease: "power2.inOut" });
+      });
+    }, "-=0.5");
 
-  $(window).on('mousedown touchstart', dragStart);
-  $(window).on('mouseup touchend', dragEnd);
-
+  $(window).on("mousedown touchstart", dragStart);
+  $(window).on("mouseup touchend", dragEnd);
 
   function dragStart(e) {
     if (e.touches) e.clientX = e.touches[0].clientX;
     xPos = Math.round(e.clientX);
-    gsap.set('.ring', { cursor: 'grabbing' })
-    $(window).on('mousemove touchmove', drag);
+    gsap.set(".ring", { cursor: "grabbing" });
+    $(window).on("mousemove touchmove", drag);
   }
 
   function drag(e) {
     if (e.touches) e.clientX = e.touches[0].clientX;
 
-    gsap.to('.ring', {
-      rotationY: '-=' + ((Math.round(e.clientX) - xPos) % 360),
-      onUpdate: () => { gsap.set('.pho', { backgroundPosition: (i) => getBgPos(i) }) }
+    gsap.to(".ring", {
+      rotationY: "-=" + ((Math.round(e.clientX) - xPos) % 360),
+      onUpdate: () => {
+        gsap.set(".pho", { backgroundPosition: (i) => getBgPos(i) });
+      },
     });
 
     xPos = Math.round(e.clientX);
   }
 
-
   function dragEnd(e) {
-    $(window).off('mousemove touchmove', drag);
-    gsap.set('.ring', { cursor: 'grab' });
+    $(window).off("mousemove touchmove", drag);
+    gsap.set(".ring", { cursor: "grab" });
   }
 
-  function getBgPos(i) { //returns the background-position string to create parallax movement in each image
-    return (100 - gsap.utils.wrap(0, 360, gsap.getProperty('.ring', 'rotationY') - 180 - i * 36) / 360 * 500) + 'px 0px';
+  function getBgPos(i) {
+    //returns the background-position string to create parallax movement in each image
+    return (
+      100 -
+      (gsap.utils.wrap(
+        0,
+        360,
+        gsap.getProperty(".ring", "rotationY") - 180 - i * 36
+      ) /
+        360) *
+      500 +
+      "px 0px"
+    );
   }
+
 </script>
 
 <body data-barba="wrapper">
@@ -265,22 +278,22 @@
         </div>
       </div>
     </section>
-    <section id="picture">
-      <div class="container reveal ">
-        <div class="component">
-          <div class="ring">
-            <div class="pho">HELlloo</div>
-            <div class="pho"></div>
-            <div class="pho"></div>
-            <div class="pho"></div>
-            <div class="pho"></div>
-            <div class="pho"></div>
-            <div class="pho"></div>
-            <div class="pho"></div>
-            <div class="pho"></div>
-            <div class="pho"></div>
-          </div>
+    <section id="picture" class="container reveal ">
+      <div class="component">
+        <!-- <div > -->
+        <div class="ring">
+          <div class="pho"><img src="https://picsum.photos/200" /></div>
+          <div class="pho"></div>
+          <div class="pho"></div>
+          <div class="pho"></div>
+          <div class="pho"></div>
+          <div class="pho"></div>
+          <div class="pho"></div>
+          <div class="pho"></div>
+          <div class="pho"></div>
+          <div class="pho"></div>
         </div>
+        <!-- </div> -->
       </div>
     </section>
 
@@ -298,8 +311,11 @@
         }
       }
     </script>
+  <!-- <script type="javascript" src="/pages/default.js"></script> -->
   <script type="module" src="pages/main.js"></script>
   <script type="module" src="/pages/transistion.js"></script>
+
+
 </body>
 
 </html>

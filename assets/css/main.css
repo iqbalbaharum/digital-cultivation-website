@@ -199,6 +199,7 @@ section .text-container .text-box h3 {
 #photo{
   overflow: hidden;
 }
+
 .ring, .pho {
   width:100%;
   height: 100%;
